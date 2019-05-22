@@ -7,11 +7,9 @@ sudo: true
 branches:
   except:
     - master
-env:
-  global:
-  - secure: R61XmjAE1j2w1ynoBud6mliJX5Y73u9ncyVaSM9LajclYAEWRWD7n/bvAf8rfI/Al1FeLIedscMsfgdpBc4Lu+USO4NnH2cpjrWXQmU5xTF3sHSKK9a+jzHxa7kZQf+e2uePO39Ty7FypxBJ01Zsuiv6/Hv3PVpufZU60sywg/E=
-  - secure: hiF+Sfpzc4C2Kxg+VgOHQ6ITPJRRwQJ802b6wnZy7Z1Ta9Gl01AgOFGWkf2raq4cQMlWw82UfiL7dEJ/bHwsEo3PoBMVhRG1AjiTY3dpoiKUjlX3MAl4SCZtBjmBN+4QT8HGOruhlKBG3xLNryg1UhjSbThPnw1rI//Be3IWH+o=
-  - secure: TVM/SM0AXEVRKDFoLWhJy3zaCnlcOTxasWuufnnWPS1yyROPMUzel40OlByc4RJs0s7L7EPyFloBjF0hAwFB+KnPFsyrnLqvLto3egWEcfnA1rIjN98bM4y2qIF1TIuV7/DFIk5YJFhlDC8amc6l82yKtkdDb2LD4k0TKx3fySc=
+# env:
+#   global:
+
 #cache:
 #  directories:
 #  - node_modules
@@ -27,14 +25,7 @@ before_install:
 - sudo cp scripts/innosetup/iscc /usr/local/bin/iscc
 - iscc /? 2> /dev/null | grep "Inno Setup Preprocessor"
 # private keys for app
-- if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_54b2df9dba46_key
-  -iv $encrypted_54b2df9dba46_iv -in private.json.enc -out src/config/private.json
-  -d; fi
-# dropbox uploader key
-- if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_8efd489acff0_key
-  -iv $encrypted_8efd489acff0_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader
-  -d; fi
-
+- if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_b624ede0bd8e_key -iv $encrypted_b624ede0bd8e_iv -in private.json.enc -out private.json -d; fi
 # install git lfs
 #- mkdir -p $HOME/bin
 #- wget https://github.com/github/git-lfs/releases/download/v1.3.1/git-lfs-linux-amd64-1.3.1.tar.gz
@@ -66,41 +57,35 @@ after_success:
 - gulp build --linux
 - gulp build --osx
 - gulp release
-# upload to dropbox
-- if [ -f ~/.dropbox_uploader ]; then
-    echo 'uploading build to dropbox';
-    ./dropbox_uploader.sh -q upload ./release/ travis-artifacts/$TRAVIS_JOB_NUMBER/;
-  else
-    echo 'missing ~/.dropbox_uploader. Skipping dropbox upload.';
-  fi
+
 deploy:
 # develop branch
-- provider: surge
-  project: "./release/"
-  domain: develop.ts-desktop.surge.sh
-  skip_cleanup: true
-  on:
-    branch: develop
-    condition: "-d ./release"
-# catch-all
-- provider: surge
-  project: "./release/"
-  domain: sandbox.ts-desktop.surge.sh
-  skip_cleanup: true
-  on:
-    all_branches: true
-    tags: false
-    condition: "-d ./release && $TRAVIS_BRANCH != develop && ! ($TRAVIS_BRANCH =~ ^release-.*$) && $TRAVIS_BRANCH != master"
-# release branch
-- provider: surge
-  project: "./release/"
-  domain: release.ts-desktop.surge.sh
-  skip_cleanup: true
-  on:
-    all_branches: true
-    tags: false
-    condition: "-d ./release && $TRAVIS_BRANCH =~ ^release-.*$"
-# master branch
+# - provider: surge
+#   project: "./release/"
+#   domain: develop.ts-desktop.surge.sh
+#   skip_cleanup: true
+#   on:
+#     branch: develop
+#     condition: "-d ./release"
+# # catch-all
+# - provider: surge
+#   project: "./release/"
+#   domain: sandbox.ts-desktop.surge.sh
+#   skip_cleanup: true
+#   on:
+#     all_branches: true
+#     tags: false
+#     condition: "-d ./release && $TRAVIS_BRANCH != develop && ! ($TRAVIS_BRANCH =~ ^release-.*$) && $TRAVIS_BRANCH != master"
+# # release branch
+# - provider: surge
+#   project: "./release/"
+#   domain: release.ts-desktop.surge.sh
+#   skip_cleanup: true
+#   on:
+#     all_branches: true
+#     tags: false
+#     condition: "-d ./release && $TRAVIS_BRANCH =~ ^release-.*$"
+# # master branch
 - provider: releases
   api_key:
     secure: brjmL3cyCTr6swNCqka2fkc41j+PO2tqXZhE9QyNoDEXcxR1FOwPoPut/8h4N/pISfkf2FibtsWqThhW1Xz1pVNNMBlHRblJsSecfvXOtn7kneCsAV+QBngbPuA8OKzfhXTUeIQNlIpfG+rwlDg28wOthDI/7ADBOYgGQWeOd7o=
