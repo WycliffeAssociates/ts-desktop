@@ -8,8 +8,6 @@ branches:
   except:
   - master
 before_install:
-- openssl aes-256-cbc -K $encrypted_ee6029b3102f_key -iv $encrypted_ee6029b3102f_iv
-  -in private.json.enc -out private.json -d
 - "./scripts/skip_travis_commits.sh"
 - sudo add-apt-repository --yes ppa:ubuntu-wine/ppa
 - sudo add-apt-repository --yes ppa:arx/release
@@ -20,8 +18,8 @@ before_install:
 - "./scripts/innosetup/innoinstall.sh"
 - sudo cp scripts/innosetup/iscc /usr/local/bin/iscc
 - iscc /? 2> /dev/null | grep "Inno Setup Preprocessor"
-- if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_b624ede0bd8e_key
-  -iv $encrypted_b624ede0bd8e_iv -in private.json.enc -out private.json -d; fi
+- if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_ee6029b3102f_key -iv $encrypted_ee6029b3102f_iv
+  -in private.json.enc -out private.json -d; fi
 before_script:
 - git config --global url."https://".insteadOf git://
 - npm install
