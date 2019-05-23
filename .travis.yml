@@ -18,8 +18,8 @@ before_install:
 - "./scripts/innosetup/innoinstall.sh"
 - sudo cp scripts/innosetup/iscc /usr/local/bin/iscc
 - iscc /? 2> /dev/null | grep "Inno Setup Preprocessor"
-- if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_ee6029b3102f_key -iv $encrypted_ee6029b3102f_iv
-  -in private.json.enc -out private.json -d; fi
+- if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_ee6029b3102f_key
+  -iv $encrypted_ee6029b3102f_iv -in private.json.enc -out private.json -d; fi
 before_script:
 - git config --global url."https://".insteadOf git://
 - npm install
@@ -40,9 +40,9 @@ after_success:
 - gulp build --osx
 - gulp release
 deploy:
-- provider: releases
+  provider: releases
   api_key:
-    secure: brjmL3cyCTr6swNCqka2fkc41j+PO2tqXZhE9QyNoDEXcxR1FOwPoPut/8h4N/pISfkf2FibtsWqThhW1Xz1pVNNMBlHRblJsSecfvXOtn7kneCsAV+QBngbPuA8OKzfhXTUeIQNlIpfG+rwlDg28wOthDI/7ADBOYgGQWeOd7o=
+    secure: k+kcXY9kJWx/sTimvdOebX20eTKL1MGXPkvewu/RagOwEvpeOmNt2Y6+L6aZmK0zqIY5O3ijrDIwS9bYjxMn3ap3N6B8IyvUQBFHOktfD0Tpkh74czqKp5yfoldFl6FKQxEC54+xTFln2vuRKX0qIC7ZI1+sw+fG+WhgjkLRLgGGurw0IkA/zVY3mjwGmkJiJUzA8B6OeGMKRRD0moRYv8IHBx2LnOc/dPdDszJDsFQRU5PIAOSy3SgP0OHtptB/z6KTO76j4iLo4/zR+RGb9Swb2TjHeIquQX3w2G11Tew27qtDQrtO+aClsQQXOGi0aphRUp3azLAoxTjAX/WXTa6HF9R1T54FBq11uwPli+akvlZFGkJOmyWux9+hubNQjptZcFN4C3PSBCCyTkIvzk4Xy+h+/C0R3TJQWQ8i28Jvfj9GEoAb7UyiluBCttzo613mKE1GRv5iGoFMceqo3mgCsJrI/4+Hfpjt6W0tr3h8JJ87p5EEdTXcB7ZThseaXZskvKExkxYETgNreE78UTMjJuWDKYLP6vsuRT9DVoeKTquPI1S5cc6p94KTbhDfDAuuBoLu3cx2dCcBx8VR6NzqEMAONAwCbkXo/o6VAlfT+GglmjVSEVHhAFwaNVC9kYi3HgK5hIUgGPtNv3UPlFY1ymV+pH5Jur+lQsyNnQQ=
   file:
   - release/*.exe
   - release/*.zip
