@@ -236,9 +236,10 @@ process.stdout.write = console.log.bind(console);
         })(),
 
         userManager: (function () {
-            return new UserManager({
-                token: configurator.getValue('gogs-token')
-            });
+            return new UserManager(
+                { token: configurator.getValue('gogs-token') },
+                configurator.getUserSetting("dataserver")
+            );
         })(),
 
         importManager: (function () {

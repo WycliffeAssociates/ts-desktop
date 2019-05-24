@@ -137,9 +137,10 @@
     {
         "name": "dataserver",
         "mainText": "Data Server",
-        "value": "git.door43.org",
-        "group": "upload",
-        "enabled": false,
+        "value": "https://git.door43/org",
+        "default": "https://git.door43.org",
+        "group": "advanced",
+        "enabled": true,
         "visible": true
     },
     {
