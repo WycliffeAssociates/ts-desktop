@@ -146,8 +146,9 @@
         "name": "mediaserver",
         "mainText": "Media Server",
         "value": "https://api.unfoldingword.org/",
-        "group": "upload",
-        "enabled": false,
+        "default": "https://api.unfoldingword.org/",
+        "group": "advanced",
+        "enabled": true,
         "visible": true
     },
     {

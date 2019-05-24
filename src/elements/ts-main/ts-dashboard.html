@@ -1096,7 +1096,7 @@
           var projectmeta = this.currentproject.projectmeta;
           var translation = this.currentproject.chunks;
           var conflicts = this.currentproject.conflicts;
-          var mediaServer = "https://api.unfoldingword.org/";
+          var mediaServer = App.configurator.getUserSetting("mediaserver");
           var name = projectmeta.unique_id;
           var defaultPath = App.configurator.getUserPath('datalocation', name);
           var filePath;
@@ -1353,7 +1353,8 @@
           App.configurator.setUserSetting('appversion', App.configurator.getAppData().toString());
           App.configurator.setUserSetting('datapath', App.configurator.getValue('rootdir'));
           App.configurator.setUserSetting('dataserver', "git.door43.org");
-          App.configurator.setUserSetting('mediaserver', "https://api.unfoldingword.org/");
+          // App.configurator.setUserSetting('mediaserver', "https://api.unfoldingword.org/");
+          console.log("user-setting mediaserver: " + App.configurator.getUserSetting("mediaserver"));
 
           var location = App.configurator.getUserSetting('datalocation');
 
