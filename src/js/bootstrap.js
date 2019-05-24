@@ -143,8 +143,6 @@ process.stdout.write = console.log.bind(console);
         var resourceDir = path.join(libraryDir, 'resource_containers');
         var srcDB = path.join(srcDir, 'index', 'index.sqlite');
         var srcResource = path.join(srcDir, 'index', 'resource_containers');
-        var apiURL = configurator.getUserSetting("mediaserver") + "/v2/ts/catalog.json";
-        console.log("apiURL: " + apiURL);
         var indexstat;
 
         try {
@@ -161,7 +159,7 @@ process.stdout.write = console.log.bind(console);
 
         var db = new Db(libraryPath, resourceDir);
 
-        return new DataManager(db, resourceDir, apiURL, srcResource);
+        return new DataManager(db, resourceDir, srcResource);
     })();
 
     setMsg('Initializing modules...');
