@@ -40,14 +40,6 @@
         }
     },
     {
-        "name": "mediaServer",
-        "value": "https://api.unfoldingword.org",
-        "meta":{
-            "mutable": false,
-            "type": "string"
-        }
-    },
-    {
         "name": "backupInterval",
         "value": 5,
         "meta":{
