@@ -7,6 +7,9 @@ sudo: true
 branches:
   except:
   - master
+env:
+  global:
+    secure: L8Ha41yyRYLrEKt+6KlrX9mJo64dL7mU6uSqZ3qqpQdmAIbalEWWB1efVnEjKQ6f4XBuo2aZrFhRF+cRypAy/sNvWp1KgR78Zuoml79MV45eiyiOoja5nxNT2/wAyrXcVA9xV110xzMgEKMN7X8vzoQN8eWzKL0LUBw7su/HyT2RKANEpzXdOrJCYSqFnul5WmJ5nIEetco0nLiL2S5Gwi2jPzmJ0YPnt9ffEuf0HjijJybMQgoSOMFN1gBcP0Sc5o2oPp3AHypInOJ1gsFPmEf+Tec6VwrxjhyUGjohjmjOzT8qmyGxmr3ltpjdda6+LPHYReF1jeKiVWQkyxwQ0vyuxmuNgkJqIJ7wGT9BpoSlFJyoi0X3Rq7GISyatWaGe6oKaAUAs7hIGj+2ppnh5mSnxYut5n5KFAe3NtT9B/eTo2+u2pbi/uxoexAMUd2SNH2l83vPo6wQ8BdxptsMOOrHWqjaCINcFBma/WHdPXH1V7AJba3zYEcv/gYXNpILMAOxEDq7yZ+c/uNWZsJ/fA1sDok6jYHIbVpliO0eQEpQRZmOo9cQp7/5125ruBJ0nkelFqiHEJn0f/mdRN19QerQm7op4DS7oSZyj9F8GJtvQEcg1FMyyhAM4KmduLJTcdofjpdut+pv6EllUJbHPisrLJxs7w+scNRqh11egRU=
 before_install:
 - "./scripts/skip_travis_commits.sh"
 - sudo add-apt-repository --yes ppa:ubuntu-wine/ppa
@@ -40,9 +43,9 @@ after_success:
 - gulp build --osx
 - gulp release
 deploy:
-  provider: releases
+- provider: releases
   api_key:
-    secure: k+kcXY9kJWx/sTimvdOebX20eTKL1MGXPkvewu/RagOwEvpeOmNt2Y6+L6aZmK0zqIY5O3ijrDIwS9bYjxMn3ap3N6B8IyvUQBFHOktfD0Tpkh74czqKp5yfoldFl6FKQxEC54+xTFln2vuRKX0qIC7ZI1+sw+fG+WhgjkLRLgGGurw0IkA/zVY3mjwGmkJiJUzA8B6OeGMKRRD0moRYv8IHBx2LnOc/dPdDszJDsFQRU5PIAOSy3SgP0OHtptB/z6KTO76j4iLo4/zR+RGb9Swb2TjHeIquQX3w2G11Tew27qtDQrtO+aClsQQXOGi0aphRUp3azLAoxTjAX/WXTa6HF9R1T54FBq11uwPli+akvlZFGkJOmyWux9+hubNQjptZcFN4C3PSBCCyTkIvzk4Xy+h+/C0R3TJQWQ8i28Jvfj9GEoAb7UyiluBCttzo613mKE1GRv5iGoFMceqo3mgCsJrI/4+Hfpjt6W0tr3h8JJ87p5EEdTXcB7ZThseaXZskvKExkxYETgNreE78UTMjJuWDKYLP6vsuRT9DVoeKTquPI1S5cc6p94KTbhDfDAuuBoLu3cx2dCcBx8VR6NzqEMAONAwCbkXo/o6VAlfT+GglmjVSEVHhAFwaNVC9kYi3HgK5hIUgGPtNv3UPlFY1ymV+pH5Jur+lQsyNnQQ=
+    secure: jd0GassUuHhUl7YSIwjtkBJXJmTnk3mxQXwEiPirxjaL3ci0hg8clj+f1hBouIdoNzJIAZlAC8DFhrg0usFuMkFi+BGNBgCQHRwfkGOgxUeK4wytRqD3Ncz8srjbLlmG7fGEgLYU3TKnj+DgcGzuNZWqnQgXVu3owemAJpbZG2u3a9JjY/Z15oqAoOCNO6qMc0m6KUrd+G6sDsJLHmb22mPUr8QqFrfcG5nUefdZf4zU4ZUOXaC9/3nc1vy536vIqCcsKZHcrNvomSxQLqF2CLmsS9nMDD+ZGVEAZ15HCGc/aVpdTJKjK4aWw49Dopt1baVYPAuWG0Xyt3KUS/5B+ORf9xOWCHuLOngRbZq8qWsGy6oI+Yy6CZVwOU2Q56lXjbSDWLS4hp+O4fscn5mHnVaUEcmLKn4MlDHxdGLJPUZWLrJ+oblbIDsqGklH77X1YIXvFsCvg31AvWPQWrEtB5S2HafmQeu82VxD+/RQtPDWlEuz08QEJ1WgcHb2kUXxbBfWPNykDnhzsSrPB+iCOHYaugSO0bthiAm/LKIjt2cBb1Yoe+e/92ZqKls+RyZXzi2EDr6gG4e43FxBs4s7DZTvTVwvsDu+8csMFhtJansb0SkXeH9A4rZf1EamdMTrnordVKnYUTLIQKr9VyJ85Hy4Y9v8U+CRpLWvxBj/6ys=
   file:
   - release/*.exe
   - release/*.zip
@@ -51,5 +54,19 @@ deploy:
   overwrite: true
   on:
     tags: true
-    repo: unfoldingWord-dev/ts-desktop
+    repo: WycliffeAssociates/ts-desktop
+    condition: "-d ./release"
+- provider: surge
+  project: "./release/"
+  domain: sandbox.wa-ts-desktop.surge.sh
+  skip_cleanup: true
+  on:
+    branch: all
+    condition: "-d ./release"
+- provider: surge
+  project: "./release/"
+  domain: develop.wa-ts-desktop.surge.sh
+  skip_cleanup: true
+  on:
+    branch: develop
     condition: "-d ./release"
