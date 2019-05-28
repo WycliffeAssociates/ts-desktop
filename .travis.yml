@@ -61,7 +61,7 @@ deploy:
   domain: sandbox.wa-ts-desktop.surge.sh
   skip_cleanup: true
   on:
-    branch: all
+    all_branches: true
     condition: "-d ./release"
 - provider: surge
   project: "./release/"
