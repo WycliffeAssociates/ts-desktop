@@ -57,17 +57,7 @@ deploy:
     tags: true
     repo: WycliffeAssociates/ts-desktop
     condition: "-d ./release"
-- provider: surge
-  project: "./release/"
-  domain: sandbox.wa-ts-desktop.surge.sh
-  skip_cleanup: true
-  on:
-    all_branches: true
-    condition: "-d ./release"
-- provider: surge
-  project: "./release/"
-  domain: develop.wa-ts-desktop.surge.sh
-  skip_cleanup: true
-  on:
-    branch: develop
-    condition: "-d ./release"
+addons:
+  artifacts:
+    paths:
+    - ./release
