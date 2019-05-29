@@ -60,4 +60,5 @@ deploy:
 addons:
   artifacts:
     paths:
-    - ./release
+    - $(ls ./release/*.exe | tr "\n" ":")
+    - $(ls ./release/*.zip | tr "\n" ":")
