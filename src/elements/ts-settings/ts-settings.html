@@ -298,6 +298,9 @@
                 App.configurator.setUserSetting("mediaserver", value.mediaserver);
                 this.set('settings', App.configurator.refreshUserSetting());
                 this.saveSettings();
+                // TODO This bypasses Polymer to call the ts-dashboard.showMessage() function.  Is there a better way?
+                var dashboard = document.querySelector('ts-dashboard')
+                dashboard.showMessage("Server Suite Changed", "Please close and restart the application.")
             }
             App.configurator.applyPrefAppearance();
         },
