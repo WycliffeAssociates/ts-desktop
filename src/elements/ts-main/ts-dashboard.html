@@ -956,7 +956,8 @@
                   return App.gitManager.push(user, paths.projectDir, repo).then(App.utils.ret(repo.full_name));
               })
               .then(function (fullname) {
-                  var url = "https://door43.org/u/" + fullname;
+                  var server = App.configurator.getUserSetting("dataserver");
+                  var url = server + "/u/" + fullname;
 
                   mythis.set('options.title', "Upload Complete");
                   mythis.set('options.body', "Your project has been uploaded to:");
@@ -977,7 +978,7 @@
                   if (err.syscall === "getaddrinfo") {
                       errmessage = "Unable to connect to server";
                   } else if (err.status === 401) {
-                      errmessage = "Cannot upload without connecting to a Door43 account.";
+                      errmessage = "Cannot upload without connecting to a server account.";
                   } else {
                       errmessage = err.data || err.stderr || "An error occurred while trying to upload your project.";
                   }
