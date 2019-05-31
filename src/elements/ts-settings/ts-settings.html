@@ -293,6 +293,12 @@
             this.set(path, value);
             this.closeSettingModal();
             this.saveSettings();
+            if (name === "serversuite") {
+                App.configurator.setUserSetting("dataserver", value.dataserver);
+                App.configurator.setUserSetting("mediaserver", value.mediaserver);
+                this.set('settings', App.configurator.refreshUserSetting());
+                this.saveSettings();
+            }
             App.configurator.applyPrefAppearance();
         },
 

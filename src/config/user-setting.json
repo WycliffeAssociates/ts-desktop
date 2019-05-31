@@ -135,6 +135,18 @@
         "visible": true
     },
     {
+        "name": "serversuite",
+        "mainText": "Server Suite (e.g. WACS or DCS)",
+        "value": {"name": "WACS"},
+        "options": [
+            {"name": "WACS", "dataserver": "https://wacs.bibletranslationtools.org", "mediaserver": "https://api.bibletranslationtools.org"},
+            {"name": "DCS",  "dataserver": "https://git.door43.org",                 "mediaserver": "https://api.unfoldingword.org"}
+            ],
+        "group": "advanced",
+        "enabled": true,
+        "visible": true
+    },
+    {
         "name": "dataserver",
         "mainText": "Data Server",
         "value": "https://git.door43/org",
