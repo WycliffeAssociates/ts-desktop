@@ -149,8 +149,8 @@
     {
         "name": "dataserver",
         "mainText": "Data Server",
-        "value": "https://git.door43/org",
-        "default": "https://git.door43.org",
+        "value": "https://wacs.bibletranslationtools.org",
+        "default": "https://wacs.bibletranslationtools.org",
         "group": "advanced",
         "enabled": true,
         "visible": true
@@ -158,8 +158,8 @@
     {
         "name": "mediaserver",
         "mainText": "Media Server",
-        "value": "https://api.unfoldingword.org",
-        "default": "https://api.unfoldingword.org",
+        "value": "https://api.bibletranslationtools.org",
+        "default": "https://api.bibletranslationtools.org",
         "group": "advanced",
         "enabled": true,
         "visible": true
