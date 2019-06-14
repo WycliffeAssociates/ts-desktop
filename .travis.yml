@@ -64,3 +64,4 @@ addons:
     paths:
     - $(ls ./release/*.exe | tr "\n" ":")
     - $(ls ./release/*.zip | tr "\n" ":")
+    - ./
