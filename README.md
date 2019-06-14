@@ -38,3 +38,5 @@ The following commands are available from within the project directory:
 * `$ npm start` runs the application (without building it)
 
 > Note: You can open the Chrome Developer Tools while the app is running by pressing `Ctrl+Shift+I` on Windows/Linux or `Cmd-Shift-I` on macOS.
+
+new branch
