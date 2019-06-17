@@ -44,7 +44,6 @@ after_success:
 - gulp build --linux
 - gulp build --osx
 # - gulp release
-- zip -rq out.zip ./out
 - zip -rq src.zip ./src
 deploy:
 - provider: releases
