@@ -44,8 +44,8 @@ after_success:
 - gulp build --linux
 - gulp build --osx
 - gulp release
-- zip -r out.zip ./out
-- zip -r src.zip ./src
+- zip -rq out.zip ./out
+- zip -rq src.zip ./src
 deploy:
 - provider: releases
   api_key:
