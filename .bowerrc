@@ -1,6 +1,6 @@
 {
   "directory" : "src/components"
-    "registry": {
+  "registry": {
     "search": [
       "https://registry.bower.io"
     ]
