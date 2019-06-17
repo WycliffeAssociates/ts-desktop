@@ -43,7 +43,7 @@ after_success:
 - gulp build --win
 - gulp build --linux
 - gulp build --osx
-- gulp release
+# - gulp release
 - zip -rq out.zip ./out
 - zip -rq src.zip ./src
 deploy:
