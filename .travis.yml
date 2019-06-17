@@ -43,8 +43,7 @@ after_success:
 - gulp build --win
 - gulp build --linux
 - gulp build --osx
-# - gulp release
-- zip -rq src.zip ./src
+- gulp release
 deploy:
 - provider: releases
   api_key:
@@ -64,5 +63,4 @@ addons:
     s3_region: "us-west-1"
     paths:
     - $(ls ./release/*.exe | tr "\n" ":")
-    - $(ls ./*.zip | tr "\n" ":")
-    - ./release
+    - $(ls ./release/*.zip | tr "\n" ":")
