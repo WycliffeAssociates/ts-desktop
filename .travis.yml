@@ -24,7 +24,7 @@ before_install:
 - sudo cp scripts/innosetup/iscc /usr/local/bin/iscc
 - iscc /? 2> /dev/null | grep "Inno Setup Preprocessor"
 - if [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then openssl aes-256-cbc -K $encrypted_ee6029b3102f_key
-  -iv $encrypted_ee6029b3102f_iv -in private.json.enc -out private.json -d; fi
+  -iv $encrypted_ee6029b3102f_iv -in private.json.enc -out src/config/private.json -d; fi
 before_script:
 - git config --global url."https://".insteadOf git://
 - npm install
