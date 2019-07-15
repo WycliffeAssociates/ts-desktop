@@ -28,7 +28,7 @@ before_install:
 before_script:
 - git config --global url."https://".insteadOf git://
 - npm install
-- patch node_modules/gogs-client/lib/request.js < gogs-client-lib-request.diff
+- patch --forward --reject-file=- node_modules/gogs-client/lib/request.js < gogs-client-lib-request.diff || ( EXIT_CODE=$?; if [ $EXIT_CODE -gt 1 ]; then exit $EXIT_CODE; fi )
 - npm install gulp -g
 - npm install bower -g
 script: npm test
