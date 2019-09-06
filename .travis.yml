@@ -47,7 +47,7 @@ after_success:
 - gulp build --win
 - gulp build --linux
 - gulp build --osx
-- gulp release
+- travis_wait gulp release
 deploy:
 - provider: releases
   api_key:
