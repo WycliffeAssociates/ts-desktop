@@ -3,9 +3,9 @@
 
 #define MyAppName "BTT-Writer"
 #define Version "1.0.0"
-#define Build "88"
-#define MyAppPublisher "Unfolding Word"
-#define MyAppURL "https://unfoldingword.org"
+#define Build "1"
+#define MyAppPublisher "Wycliffe Associates"
+#define MyAppURL "https://writer.bibletranslationtools.org"
 #define MyAppExeName "BTT-Writer.exe"
 #define MyLicenseFile "LICENSE"
 
