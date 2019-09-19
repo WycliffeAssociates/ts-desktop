@@ -15,7 +15,7 @@ app.setPath('userData', (function (dataDir) {
             : path.join(process.env.HOME, '.config'));
 
     return path.join(base, dataDir);
-})('BTT Writer'));
+})('BTT-Writer'));
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

@@ -65,7 +65,7 @@
     {
         "name": "datalocation",
         "mainText": "Backup Location",
-        "value": "~/BTT Writer",
+        "value": "~/BTT-Writer",
         "group": "general",
         "enabled": true,
         "visible": true
