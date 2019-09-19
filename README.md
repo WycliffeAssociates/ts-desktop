@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/WycliffeAssociates/ts-desktop.svg?branch=develop)](https://travis-ci.com/WycliffeAssociates/ts-desktop)
+
 BTT-Writer Desktop
 --
 

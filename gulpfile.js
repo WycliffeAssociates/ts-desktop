@@ -151,7 +151,7 @@ gulp.task('release', function(done) {
      */
     const releaseWin = function(arch, os) {
         // TRICKY: the iss script cannot take the .exe extension on the file name
-        var file = `BTT-${p.version}-${p.build}-win-x${arch}`;
+        var file = `BTT-Writer-${p.version}-${p.build}-win-x${arch}`;
         var cmd = `iscc scripts/win_installer.iss /DArch=${arch == '64' ? 'x64' : 'x86'} /DRootPath=../ /DVersion=${p.version} /DBuild=${p.build} /DGitVersion=${gitVersion} /DDestFile=${file} /DDestDir=${RELEASE_DIR} /DBuildDir=${BUILD_DIR}`;
         return new Promise(function(resolve, reject) {
             exec(cmd, function(err, stdout, stderr) {
@@ -203,7 +203,7 @@ gulp.task('release', function(done) {
                 case 'darwin':
                     if (fs.existsSync(BUILD_DIR + 'BTT-Writer-darwin-x64/')) {
                         promises.push(new Promise(function (os, resolve, reject) {
-                            var dest = `${RELEASE_DIR}BTT-${p.version}-${p.build}-osx-x64.zip`;
+                            var dest = `${RELEASE_DIR}BTT-Writer-${p.version}-${p.build}-osx-x64.zip`;
                             try {
                                 var output = fs.createWriteStream(dest);
                                 output.on('close', function () {
@@ -238,7 +238,7 @@ gulp.task('release', function(done) {
                 case 'linux':
                     if (fs.existsSync(BUILD_DIR + 'BTT-Writer-linux-x64/')) {
                         promises.push(new Promise(function (os, resolve, reject) {
-                            var dest = `${RELEASE_DIR}BTT-${p.version}-${p.build}-linux-x64.zip`;
+                            var dest = `${RELEASE_DIR}BTT-Writer-${p.version}-${p.build}-linux-x64.zip`;
                             try {
                                 var output = fs.createWriteStream(dest);
                                 output.on('close', function () {
