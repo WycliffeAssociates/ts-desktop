@@ -1,3 +1,5 @@
+Repo is archived and has moved here: https://github.com/Bible-Translation-Tools/BTT-Writer-Desktop
+
 [![Build Status](https://travis-ci.com/WycliffeAssociates/ts-desktop.svg?branch=develop)](https://travis-ci.com/WycliffeAssociates/ts-desktop)
 
 BTT-Writer Desktop
